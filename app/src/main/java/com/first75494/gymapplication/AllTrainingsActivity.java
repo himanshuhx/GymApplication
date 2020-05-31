@@ -24,10 +24,8 @@ public class AllTrainingsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         ArrayList<Training> allTrainings=Utils.getTrainings();
-        if(allTrainings!=null && !allTrainings.isEmpty())
-        {
+        if(allTrainings!=null )
             adapter.setTrainings(allTrainings);
-        }
         }
     }
 

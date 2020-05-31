@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class TrainingAdapter extends RecyclerView.Adapter<TrainingAdapter.ViewHolder> {
 
-    private ArrayList<MainActivity.Training>  trainings = new ArrayList<>();
+    private ArrayList<Training>  trainings = new ArrayList<>();
     private Context context;
 
     public TrainingAdapter(Context context) {
@@ -35,7 +35,8 @@ public class TrainingAdapter extends RecyclerView.Adapter<TrainingAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
        //log.d
-        holder.name.setText(trainings.get(position).getShortDesc());
+        holder.name.setText(trainings.get(position).getName());
+        holder.description.setText(trainings.get(position).getShortDesc());
         Glide.with(context)
                 .asBitmap()
                 .load(trainings.get(position).getImageUrl())
@@ -44,17 +45,16 @@ public class TrainingAdapter extends RecyclerView.Adapter<TrainingAdapter.ViewHo
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(context, "yet to be completed", Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
+                }
+    });}
 
     @Override
     public int getItemCount() {
-        return 0;
+        return trainings.size();
     }
 
-    public void setTrainings(ArrayList<MainActivity.Training> trainings) {
-        this.trainings = trainings;
+    public void setTrainings(ArrayList<Training> trainings) {
+         this.trainings = trainings;
         notifyDataSetChanged();
     }
 
